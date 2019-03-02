@@ -9,8 +9,13 @@ public class FFMpegProcessVideoEncoder implements IVideoEncoder {
 
     private static final String HOSTNAME = "127.0.0.1";
     private static final int PORT = 8890;
+    private String SO = "";
     private Process ffmpeg;
     private String fileName;
+
+    public FFMpegProcessVideoEncoder(String SO) {
+        this.SO = SO;
+    }
 
     public void setFileName(String name) {
         this.fileName = name;
@@ -22,8 +27,13 @@ public class FFMpegProcessVideoEncoder implements IVideoEncoder {
         }
         try {
             String output = "tcp://" + HOSTNAME + ":" + PORT + "?listen";
-            ffmpeg = new ProcessBuilder("cmd", "/c", "start", "ffmpeg", "-f", "h264", "-i", output, "-vcodec", "copy", "-r", "25", fileName)
+            if (SO == "win")
+                ffmpeg = new ProcessBuilder("cmd", "/c", "start", "ffmpeg", "-f", "h264", "-i", output, "-vcodec", "copy", "-r", "25", fileName)
                     .start();
+            else
+                ffmpeg = new ProcessBuilder("ffmpeg", "-f", "h264", "-i", output, "-vcodec", "copy", "-r", "25", fileName)
+                        .start();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

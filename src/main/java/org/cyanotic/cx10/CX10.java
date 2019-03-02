@@ -117,9 +117,9 @@ public class CX10 {
         }
     }
 
-    public void startVideoRecorder() throws IOException {
+    public void startVideoRecorder(String SO) throws IOException {
         stopVideoRecorder();
-        recorder = new FFMpegProcessVideoEncoder();
+        recorder = new FFMpegProcessVideoEncoder(SO);
         String timestamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
         recorder.setFileName("output-" + timestamp + ".mp4");
         recorder.start();
