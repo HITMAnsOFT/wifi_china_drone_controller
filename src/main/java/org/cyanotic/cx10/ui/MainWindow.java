@@ -127,7 +127,7 @@ public class MainWindow extends JFrame implements ActionListener {
                 model.setBtnRecordEnabled(false);
                 setModel(model);
 
-                cx10.startVideoRecorder();
+                cx10.startVideoRecorder((radioWindows.isSelected())?"win":"lin");
                 isRecording = true;
 
                 model = getModel();
