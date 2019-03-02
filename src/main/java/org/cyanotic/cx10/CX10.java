@@ -84,9 +84,9 @@ public class CX10 {
         }
     }
 
-    public void startVideoStream(String SO) throws IOException {
+    public void startVideoStream() throws IOException {
         stopVideoStream();
-        previewPlayer = new FFPlayProcessVideoPlayer(SO);
+        previewPlayer = new FFPlayProcessVideoPlayer();
         previewPlayer.start();
         try {
             Thread.sleep(1000);
@@ -117,9 +117,9 @@ public class CX10 {
         }
     }
 
-    public void startVideoRecorder(String SO) throws IOException {
+    public void startVideoRecorder() throws IOException {
         stopVideoRecorder();
-        recorder = new FFMpegProcessVideoEncoder(SO);
+        recorder = new FFMpegProcessVideoEncoder();
         String timestamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
         recorder.setFileName("output-" + timestamp + ".mp4");
         recorder.start();

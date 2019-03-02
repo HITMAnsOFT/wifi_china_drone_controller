@@ -24,8 +24,6 @@ public class MainWindow extends JFrame implements ActionListener {
     private JPanel panel;
     private JRadioButton radioController;
     private JRadioButton radioKeyboard;
-    private JRadioButton radioWindows;
-    private JRadioButton radioLinux;
 
     private boolean isConnected = false;
     private boolean isRecording = false;
@@ -127,7 +125,7 @@ public class MainWindow extends JFrame implements ActionListener {
                 model.setBtnRecordEnabled(false);
                 setModel(model);
 
-                cx10.startVideoRecorder((radioWindows.isSelected())?"win":"lin");
+                cx10.startVideoRecorder();
                 isRecording = true;
 
                 model = getModel();
@@ -165,7 +163,7 @@ public class MainWindow extends JFrame implements ActionListener {
                 model.setBtnVideoEnabled(false);
                 setModel(model);
 
-                cx10.startVideoStream((radioWindows.isSelected())?"win":"lin");
+                cx10.startVideoStream();
                 isPlaying = true;
 
                 model = getModel();
