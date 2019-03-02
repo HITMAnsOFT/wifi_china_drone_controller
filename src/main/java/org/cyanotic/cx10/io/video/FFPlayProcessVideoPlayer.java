@@ -25,7 +25,7 @@ public class FFPlayProcessVideoPlayer implements IVideoPlayer {
                 ffplay = new ProcessBuilder("cmd", "/c", "start", "ffplay", "-probesize", "64", "-sync", "ext", output)
                     .start();
             else
-                ffplay = new ProcessBuilder("ffplay", "-fflags", "nobuffer", "-probesize", "64", "-sync", "ext", "-an", "-sn", "-f", "h264", output)
+                ffplay = new ProcessBuilder("gst-launch-1.0", "tcpserversrc", "port=8889", "!", "h264parse", "!", "avdec_h264", "!", "xvimagesink")
                         .start();
         } catch (IOException e) {
             e.printStackTrace();
