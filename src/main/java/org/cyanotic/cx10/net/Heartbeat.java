@@ -36,7 +36,7 @@ public class Heartbeat extends Thread {
         while (!isInterrupted()) {
             try {
                 sendHeartBeat();
-                Thread.sleep(5000);
+                Thread.sleep(500);
             } catch (IOException e) {
                 System.err.println("Unable to send heartbeat");
                 e.printStackTrace();
